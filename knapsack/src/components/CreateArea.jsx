@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
-import Zoom from "@material-ui/core/Zoom";
-import InputSlider from "./Input";
 
 function CreateArea(props) {
-  const [isExpanded, setExpanded] = useState(false);
 
   const [item, setItem] = useState({
     name: "",
@@ -43,14 +40,13 @@ function CreateArea(props) {
       <form className="create-note">
       <textarea
           name="name"
-          onClick={expand}
           onChange={handleChange}
           value={item.name}
-          placeholder="Ajouter un nouvel element..."
+          placeholder="Add a new element..."
           rows={1}
         />
         
-        {isExpanded && (
+        {
           <div style={{display:'flex', alignItems : 'center'}}>
           <input
             name="weight"
@@ -60,10 +56,10 @@ function CreateArea(props) {
           />
           <span style={{color : 'grey'}}>Kg</span>
           </div>
-        )}
+          }
 
         
-        {isExpanded && (
+        {
           <div style={{display:'flex', alignItems : 'center'}}>
           <input
             name="value"
@@ -73,14 +69,10 @@ function CreateArea(props) {
           />
           <span style={{color : 'grey'}}>$</span>
           </div>
-        )}
-        
-        
-        <Zoom in={isExpanded}>
-          <Fab onClick={submitItem}>
-            <AddIcon />
+        }
+          <Fab variant="extended" onClick={submitItem}>
+            <AddIcon />Add
           </Fab>
-        </Zoom>
       </form>
     </div>
   );

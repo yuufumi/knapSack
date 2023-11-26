@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 function Header(props) {
   
   return (
-    <header>
+    <header >
       <h1>
         KnapSack Problem
       </h1>

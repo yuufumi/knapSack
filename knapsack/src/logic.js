@@ -1,7 +1,8 @@
 const item1 = { name: 'Hlib', weight: 3, value: 2 };
+/*
 const item2 = { name: 'Schweppes', weight: 4, value: 3 };
 const item3 = { name: 'Candia', weight: 5, value: 4 };
-const item4 = { name: 'IDK', weight: 6, value: 1 };
+const item4 = { name: 'IDK', weight: 6, value: 1 };*/
 
 function compare(a, b) {
   if (a.weight < b.weight) {

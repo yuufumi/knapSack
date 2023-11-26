@@ -10,10 +10,10 @@ import knapsackSolve from "../logic";
 
 
 function App() {
-  const item1 = { name: 'Hlib', weight: 3, value: 2 };
-  const item2 = { name: 'Schweppes', weight: 4, value: 3 };
-  const item3 = { name: 'Candia', weight: 5, value: 4 };
-  const item4 = { name: 'IDK', weight: 6, value: 1 };
+  const item1 = { name: 'Milk', weight: 3, value: 2 };
+  const item2 = { name: 'Soda', weight: 4, value: 3 };
+  const item3 = { name: 'Candies', weight: 5, value: 4 };
+  const item4 = { name: 'Chocolate', weight: 6, value: 1 };
   const [items, setItems] = useState([item1, item2, item3, item4]);
   const [chosen, setChosen] = useState([]);
   function compare(a, b) {

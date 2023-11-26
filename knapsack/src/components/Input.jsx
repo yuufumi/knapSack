@@ -40,15 +40,31 @@ export default function InputField(props) {
         <Box display="flex" alignItems="center" sx={{gap: 2}}>
         <label style={{color: "#ffffff", }}>Capacity: </label>
         <TextField
-        id="filled-number"
-        label="Number"
+        variant="filled"
+        label="Capacity" 
         type="number"
+        inputProps={{
+            style:{color: '#2D9596',
+                fontFamily: "poppins",
+                fontWeight: "bold",
+            } 
+        }}
         onChange={handleInputChange}
         sx={{
-            '& .MuiInputBase-input': {
-                backgroundColor: '#2D9596',
-                borderRadius: 4,
-                borderColor: "#ffffff", // Set background color
+            '& fieldset': {
+                borderColor: 'white',
+                borderRadius: 4
+            },
+
+            '.MuiInputBase-placeholder': {
+                color: '#2D9596',
+                fontWeight: 600,
+                fontFamily: "poppins" /* Adjust font weight to your preference */
+              },
+            '.MuiInputBase-input': {
+                backgroundColor: '#ffffff',
+                borderTopLeftRadius: 4,
+                borderTopRightRadius: 4, // Set background color
               },
         }}
         />
