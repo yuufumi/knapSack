@@ -55,7 +55,7 @@ function App() {
       <CreateArea onAdd={addItem} />
       <ul >
       {items.map((item, index) => { 
-        console.log(chosen[index] === 1)
+        console.log(chosen[index])
         return (
           <Note
             key={index}
@@ -64,7 +64,7 @@ function App() {
             weight={item.weight}
             value={item.value}
             onDelete={deleteItem}
-            selected={chosen[index] === 1}
+            selected={chosen[index]}
           />
         );
       })}

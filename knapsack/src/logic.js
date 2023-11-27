@@ -1,61 +1,51 @@
-const item1 = { name: 'Hlib', weight: 3, value: 2 };
 /*
-const item2 = { name: 'Schweppes', weight: 4, value: 3 };
-const item3 = { name: 'Candia', weight: 5, value: 4 };
-const item4 = { name: 'IDK', weight: 6, value: 1 };*/
+  item structure = { name: 'String', weight: integer, value: integer };
+*/
+function knapsackSolve(items, capacity) {
+  const n = items.length;
+  const dp = Array.from({ length: n + 1 }, () => Array(capacity + 1).fill(0));
 
-function compare(a, b) {
-  if (a.weight < b.weight) {
-    return -1;
+  for (let i = 1; i <= n; i++) {
+    const { value, weight } = items[i - 1];
+    for (let w = 0; w <= capacity; w++) {
+      if (weight <= w) {
+        dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - weight] + value);
+      } else {
+        dp[i][w] = dp[i - 1][w];
+      }
+    }
   }
-  if (a.weight > b.weight) {
-    return 1;
+
+  let selectedItems = [];
+  let i = n;
+  let j = capacity;
+  while (i > 0 && j > 0) {
+    if (dp[i][j] !== dp[i - 1][j]) {
+
+      selectedItems.push(true);
+      j -= items[i - 1].weight;
+    } else {
+      selectedItems.push(false);
+    }
+    i--;
   }
-  return 0;
+  return {
+    chosen: selectedItems.reverse(),
+    valueOptim: dp[n][capacity]
+  };
 }
 
-function knapsackSolve(items, weight) {
-  // Sorting Items 
 
-  items.sort(compare);
 
-  var M = [[]];
 
-  for (var j = 0; j < weight + 2; j++) {
-    M[0][j] = 0;
-  }
-  for (var i = 1; i < items.length + 1; i++) {
-    M[i] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for (j = 0; j < items[i - 1].weight; j++) {
-      M[i][j] = M[i - 1][j];
-    }
-    for (j = items[i - 1].weight; j < weight + 1; j++) {
-      M[i][j] = Math.max(
-        M[i - 1][j],
-        M[i - 1][j - items[i - 1].weight] + items[i - 1].value
-      );
-    }
-  }
 
-  var chosen = [];
 
-  i = items.length;
-  j = weight;
-  var V = 0;
 
-  while (i !== 0 && j !== 0) {
-    if (M[i][j] === M[i - 1][j]) {
-      chosen[i - 1] = 0;
-      i = i - 1;
-    } else {
-      chosen[i - 1] = 1;
-      j = j - items[i - 1].weight;
-      V = V + items[i - 1].value;
-      i = i - 1;
-    }
-  }
+
+
+  /*
   
   return { chosen: chosen, valueOptim: V }
-}
+}*/
 
 export default knapsackSolve;
